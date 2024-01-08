@@ -1,6 +1,6 @@
 FROM alpine:3.14
 
-RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community/ mopidy=3.4.2-r0 python3=3.11.6-r1
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community/ mopidy=3.4.2-r0
 RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main/ python3=3.11.6-r1
 RUN python3 -m ensurepip
 
