@@ -1,7 +1,7 @@
 FROM alpine:3.14
 
 
-RUN sed -i '/community/s/^#//' /etc/apk/repositories
+RUN sed -i '/edge/s/^#//' /etc/apk/repositories
 RUN apk add --no-cache mopidy=3.4.2-r0 python3=3.11.6-r1 py3-pip=23.3.2-r0
 
 COPY requirements.txt /tmp/requirements.txt
