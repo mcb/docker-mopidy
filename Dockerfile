@@ -8,7 +8,7 @@ RUN apk update \
             python3-dev
 
 COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt \
+RUN pip3 install -r requirements.txt --break-system-packages \
     && rm -rf ~/.cache/pip
 
 # Default configuration
