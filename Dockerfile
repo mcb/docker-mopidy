@@ -1,14 +1,17 @@
-FROM alpine:3.14
+FROM alpine:latest
 
-RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/main/ python3=3.11.6-r1
-RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community/ mopidy=3.4.2-r0
+RUN apk update \
+    && apk upgrade \
+    && apk add --no-cache \
+            mopidy \
+            py-pip \
+            python3-dev
 
-RUN python3 -m ensurepip
+RUN pip3 install --upgrade pip
 
-COPY requirements.txt /tmp/requirements.txt
-
-RUN pip3 install --upgrade pip \
-  && pip3 install -r /tmp/requirements.txt --upgrade
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt \
+    && rm -rf ~/.cache/pip
 
 # Default configuration
 ADD mopidy.conf /var/lib/mopidy/.config/mopidy/mopidy.conf
