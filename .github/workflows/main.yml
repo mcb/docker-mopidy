@@ -3,6 +3,8 @@ name: Build and publish container
 on:
   push:
     branches: [main]
+ 
+  #Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
       reason:
@@ -13,7 +15,9 @@ on:
 jobs:
   ghr_push:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: checkout

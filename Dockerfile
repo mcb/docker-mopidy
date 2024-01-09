@@ -8,6 +8,8 @@ RUN apk update \
             python3-dev
 
 COPY requirements.txt requirements.txt
+
+# run with --break-system-packages as there is no use in creating a venv in a container
 RUN pip3 install -r requirements.txt --break-system-packages \
     && rm -rf ~/.cache/pip
 
